@@ -8,6 +8,7 @@ const inquirer = require('inquirer');
 
 const questions =   [ 
                     'What is the title of your project?',
+                    'Provide a link to your project screenshot.',
                     'Give a brief description of your project: ',
                     'Are there are installation requirements?',
                     'How do you use this project?',
@@ -18,17 +19,19 @@ const questions =   [
                     ];
 
 
-
-
-
  inquirer
     .prompt([
         {
             type: 'input',
-            message: questions[1],
+            message: questions[0],
             name: 'projTitle'
         },
-        {
+        {              
+            type: 'input',
+            message: questions[1],
+            name: 'projImg'
+        },
+        {  
             type: 'input',
             message: questions[2],
             name: 'projDesc'
@@ -44,9 +47,10 @@ const questions =   [
             name: 'projUse'
         },
         {
-            type: 'input',
+            type: 'list',
             message: questions[5],
-            name: 'projLicense'
+            name: 'projLicense',
+            choices: ['MIT', 'Apache,', 'ISC']
         },
         {
             type: 'input',
@@ -69,11 +73,45 @@ const questions =   [
         .then((response) => {
 
             fs.writeFile('README.md', 
+
+                `# ${response.projTitle}
+
+                ----------------------
+
+
+                ![alt text]${response.projImg})
             
-            
-            
-            
-            
+
+                ## Description: 
+
+                ${response.projDesc}
+
+                ## Installation:
+
+                ${response.projInstal}
+
+                ## Usage:
+
+                ${response.projUse}
+
+                ## License:
+
+                ${response.projLicense}
+
+                ## Contributors:
+
+                ${response.projContrib}
+
+                ## Tests:
+
+                ${response.Tests}
+
+                ## Questions:
+
+                ${response.Questions}`
+
+
+
             
             
             
@@ -86,11 +124,11 @@ const questions =   [
         });
 
 
-// TODO: Create a function to write READMEfile
-function writeToFile(fileName, data) {}
+// // TODO: Create a function to write READMEfile
+// function writeToFile(fileName, data) {}
 
-// TODO: Create a function to initialize app
-function init() {}
+// // TODO: Create a function to initialize app
+// function init() {}
 
-// Function call to initialize app
-init();
+// // Function call to initialize app
+// init();
