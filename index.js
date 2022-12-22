@@ -63,8 +63,27 @@ const questions =   [
             message: questions[8],
             name: 'projQuest'
         }
-            ]);
+            ])
+        
 
+        .then((response) => {
+
+            fs.writeFile('README.md', 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            , (err) => err ? console.log(err) : console.log('Success!')) 
+
+
+        });
 
 
 // TODO: Create a function to write READMEfile
