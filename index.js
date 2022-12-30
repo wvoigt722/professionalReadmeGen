@@ -15,7 +15,7 @@ const questions =   [
                     'What is the license used for this prject?',
                     'Who were the contributors to this projects?',
                     'Where there any tests for this projects?', 
-                    'Do you have any questions?'
+                    'Are there any future developement ideas?'
                     ];
 
 
@@ -65,60 +65,14 @@ const questions =   [
         {
             type: 'input',
             message: questions[8],
-            name: 'projQuest'
+            name: 'projFuture'
         }
             ])
         
 
         .then((response) => {
 
-            fs.writeFile('README.md', 
-
-                `# ${response.projTitle}
-
-                ----------------------
-
-
-                ![alt text]${response.projImg})
-            
-
-                ## Description: 
-
-                ${response.projDesc}
-
-                ## Installation:
-
-                ${response.projInstal}
-
-                ## Usage:
-
-                ${response.projUse}
-
-                ## License:
-
-                ${response.projLicense}
-
-                ## Contributors:
-
-                ${response.projContrib}
-
-                ## Tests:
-
-                ${response.Tests}
-
-                ## Questions:
-
-                ${response.Questions}`
-
-
-
-            
-            
-            
-            
-            
-            
-            , (err) => err ? console.log(err) : console.log('Success!')) 
+            writeToFile('READMEfile', response)
 
 
         });
@@ -127,8 +81,62 @@ const questions =   [
 // // TODO: Create a function to write READMEfile
 // function writeToFile(fileName, data) {}
 
+function writeToFile(fileName, data) {
+    fs.writeFile('README.md', 
+    
+    
+    `
+
+    ![A Picture of the Project](${response.projImg})
+               
+    #  ${response.projTitle}
+    
+    Five Day Weather Forecaster
+    
+    ## Description
+    
+    ${response.projDesc}
+    
+    ## Install
+    
+    ${response.projInstal}
+    
+    ## Usage
+    
+    ${response.projInstal}
+    
+    ## Contributors
+    
+    ${response.projContrib}
+    
+    ## License
+    
+
+    "![License](https://img.shields.io/static/v1?label=License&message=" + itemBadge + "&color=BLUE)"
+    ${response.projLicense}
+
+    ## Tests
+
+    ${response.projTest}
+
+    ## Future Development 
+    
+    ${response.projFuture}
+    
+    `,  (err) => err ? console.log(err) : console.log('Success!')) 
+    
+}
+
 // // TODO: Create a function to initialize app
 // function init() {}
 
+function init() {
+
+}
+
+
 // // Function call to initialize app
 // init();
+
+init();
+
