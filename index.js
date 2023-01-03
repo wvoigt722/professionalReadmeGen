@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 
 
@@ -70,9 +71,11 @@ const questions =   [
             ])
         
 
-        .then((response) => {
+        .then((data) => {
 
-            writeToFile('READMEfile', response)
+           
+                fs.writeFile('README.md', generateMarkdown(data), (err) => err ? console.log(err) : console.log('Success!'))
+            
 
 
         });
@@ -81,51 +84,7 @@ const questions =   [
 // // TODO: Create a function to write READMEfile
 // function writeToFile(fileName, data) {}
 
-function writeToFile(fileName, data) {
-    fs.writeFile('README.md', 
-    
-    
-    `
 
-    ![A Picture of the Project](${response.projImg})
-               
-    #  ${response.projTitle}
-    
-    Five Day Weather Forecaster
-    
-    ## Description
-    
-    ${response.projDesc}
-    
-    ## Install
-    
-    ${response.projInstal}
-    
-    ## Usage
-    
-    ${response.projInstal}
-    
-    ## Contributors
-    
-    ${response.projContrib}
-    
-    ## License
-    
-
-    "![License](https://img.shields.io/static/v1?label=License&message=" + itemBadge + "&color=BLUE)"
-    ${response.projLicense}
-
-    ## Tests
-
-    ${response.projTest}
-
-    ## Future Development 
-    
-    ${response.projFuture}
-    
-    `,  (err) => err ? console.log(err) : console.log('Success!')) 
-    
-}
 
 // // TODO: Create a function to initialize app
 // function init() {}
