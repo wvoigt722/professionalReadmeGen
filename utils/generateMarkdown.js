@@ -6,17 +6,9 @@ const index = require('../index')
 
 function renderLicenseBadge(license) {
 
-  if(!projLicense) {
-    return
-  } else {
-    return `![License](https://img.shields.io/static/v1?label=License&message=" + {license} + "&color=BLUE)`
-  }
 
-
-  //return 
-  //  `![License](https://img.shields.io/static/v1?label=License&message=" + {license} + "&color=BLUE)`
-
-  //
+  return `![License](https://img.shields.io/static/v1?label=License&message=${license}&color=BLUE)`
+  
 
 }
 
